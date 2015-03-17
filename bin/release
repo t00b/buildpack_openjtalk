@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+cat &lt;&lt;EOF
+---
+echo "this is release file"
+config_vars:
+PATH: $PATH:/app/vendor/open_jtalk/bin
+EOF

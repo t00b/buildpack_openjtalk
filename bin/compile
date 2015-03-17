@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+echo "-----&gt; Installing OpenJTalk"
+# change to the the BUILD_DIR ($1)
+cd $1
+# download the binary (-O) silently (-s)
+curl -L -O  https://raw.githubusercontent.com/t00b/open_jtalk_bin/master/open_jtalk.tar.gz
+# make a directory to untar (like unzip) the binary
+mkdir -p vendor/open_jtalk
+# untar the binary to the directory we want
+tar -C vendor/open_jtalk -xvf open_jtalk.tar.gz
+
+BUILD_DIR=$1
+mkdir -p $BUILD_DIR/.profile.d
+PROFILE_PATH="$BUILD_DIR/.profile.d/open_jtalk.sh"
+echo 'export PATH="$PATH:$HOME/vendor/open_jtalk/usr/local/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/open_jtalk/usr/local/lib"' >> $PROFILE_PATH
